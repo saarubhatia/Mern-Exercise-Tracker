@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-
-const Exercise = props => {
+const Exercise = (props) => {
+    return(
     <tr>
         <td>{props.exercise.username}</td>
         <td>{props.exercise.description}</td>
@@ -11,9 +11,10 @@ const Exercise = props => {
         <td>{props.exercise.date.substring(0, 10)}</td>
         <td>
             <Link to={"/edit/" + props.exercise._id} />edit |
-            <a href="#" onClick={() => { props.deleteExercise(props.exercise._id) }} />Delete
+            <a href="#!" onClick={() => { props.deleteExercise(props.exercise._id) }} >Delete</a>
         </td>
     </tr>
+    )
 }
 
 
@@ -42,9 +43,11 @@ export default class ExercisesList extends Component {
     }
     exerciseList() {
         return this.state.exercises.map(currentexercise => {
-            return <Exercise exercise={currentexercise}
-                deleteExercise={this.deleteExercise}
-                key={currentexercise._id} />
+            return (
+            <Exercise exercise={currentexercise}
+                    deleteExercise={this.deleteExercise}
+                    key={currentexercise._id} />
+            )
         })
     }
     render() {
