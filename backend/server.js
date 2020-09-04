@@ -8,13 +8,12 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 //middleware
-
 app.use(cors());
 app.use(express.json());
 
 //MONGODB 
-const uri = process.env.ATLAS_URI;
-mongoose.connect('mongodb+srv://mern123:mern123@cluster0.nqdnp.gcp.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
+const uri = process.env.URL;
+mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
 
 const connection = mongoose.connection;
 connection.once('open', () => {
